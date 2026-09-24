@@ -6,11 +6,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderService {
 
+    // Field Injection
+    @Autowired
     private PaymentService paymentService;
 
-    @Autowired
-    public OrderService(PaymentService paymentService){
-        this.paymentService=paymentService;
+//    @Autowired
+//    public OrderService(PaymentService paymentService){
+//        this.paymentService=paymentService;
+//    }
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
     }
 
     public void placeOrder() {
