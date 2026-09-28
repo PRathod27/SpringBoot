@@ -9,20 +9,19 @@ public class OrderService {
 
     // Field Injection is not recommended
 //    @Autowired
-    private final PaymentService paymentService;
+    private PaymentService paymentService;
 
     // Constructor injection is most recommended injection type and I can run this code  without using autowrired when there is only one constructor.
-    public OrderService(@Qualifier("cardPayment") PaymentService paymentService){
-        this.paymentService=paymentService;
-    }
-
-//    public void setPaymentService(PaymentService paymentService) {
-//        this.paymentService = paymentService;
+//    public OrderService(@Qualifier("cardPayment") PaymentService paymentService){
+//        this.paymentService=paymentService;
 //    }
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     public void placeOrder() {
         paymentService.pay();
         System.out.println("Order Placed");
-
     }
 }
